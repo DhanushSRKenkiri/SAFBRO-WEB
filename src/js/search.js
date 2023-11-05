@@ -1,14 +1,5 @@
 // Initialize Firebase
 const firebaseConfig = {
-  // Your Firebase configuration goes here
-  apiKey: "AIzaSyAFv90X5ry69-nPzXOADx1JaUAVXyD0vDE",
-  authDomain: "safbro-e3372.firebaseapp.com",
-  projectId: "safbro-e3372",
-  storageBucket: "safbro-e3372.appspot.com",
-  databaseURL: "https://safbro-e3372-default-rtdb.asia-southeast1.firebasedatabase.app",
-  messagingSenderId: "622539592959",
-  appId: "1:622539592959:web:1a0d80e30c77487082a8ca",
-  measurementId: "G-K5G2QPJNDV"
 };
 
   // Function to handle the search button click

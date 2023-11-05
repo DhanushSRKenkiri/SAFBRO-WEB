@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Explore contents of Safbro using your Google account. Discover and stream high-quality audio content for free.">
+    <meta name="keywords" content="Safbro, library, Audio content, audio-books, lectures, audio-news, audio-books">
+    <link rel="icon" type="image/png" href="assets\img\tab_thumbnail.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src\css\library.css">
+    <title>SafBro</title>
+</head>
+
+<body>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeModal()">&times;</span>
+          <form>
+            <h1>Only Place Where You Can Access All Audio-Books and E-Books - In Development</h1>
+            <a class="h" href="home.html">Go Back To Home</a>
+          </form>
+        </div>
+      </div>
+      <script>
+        // JavaScript code to show modal on window load
+        window.onload = function() {
+          var modal = document.getElementById('modal');
+          modal.style.display = 'block';
+        };
+    
+        // Function to close the modal
+        function closeModal() {
+          var modal = document.getElementById('modal');
+          modal.style.display = 'none';
+        }
+      </script>
+</body>
+</html>

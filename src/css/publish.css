@@ -1,0 +1,487 @@
+
+* {
+    background-color: black;
+  }
+
+  header {
+    height: 85px;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(0 0 0);
+  }
+  element.style {
+    height: 75px;
+    width: fit-content;
+    align-items: center;
+  }
+  nav {
+    width: 100%;
+    display: contents;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000000;
+    color: #000000;
+    padding: 10px;
+    bottom: 0;
+    position: fixed;
+  }
+  nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+  }
+
+  nav li {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+
+  nav a {
+    display: flex;
+    margin-right: 10px;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+  }
+  nav a:hover{
+    background-color: #0f0f0f;
+  }
+
+  nav img {
+    height: 24px;
+    width: 24px;
+    margin-bottom: 5px;
+  }
+  nav img:hover{
+    background-color: #0f0f0f;
+  }
+
+  /* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #000000;
+  margin: 15% auto;
+  margin-top: 100px;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+  position: relative;
+  overflow-y: auto; /* Add this line to enable vertical scrolling */
+  max-height: 70vh; /* Adjust the value to control the maximum height of the content area */
+}
+
+
+.close {
+  font-size: xx-large;
+  width: 30px;
+  height: 20px;
+  color: #f2f2f2;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.close:hover{
+  color: #ff8800;
+}
+
+#des-input {
+  height: 89px;
+  font: inherit;
+  line-height: normal;
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--static);
+  color: white;
+  position: relative;
+  white-space: normal; /* Allow text to wrap to the next line */
+}
+
+.privacy-container {
+  display: flex;
+  align-items: baseline;
+}
+.privacy-label {
+  margin-right: 10px;
+  color: white;
+  font-family: system-ui;
+}
+
+
+#privacy{
+  width: 100px;
+  height: 30px;
+  color: white;
+  margin-bottom: 10px;
+  margin-right: 15px;
+  font-size: medium;
+  border-radius: 10px;
+  border-color: aqua;
+}
+
+#des-input::placeholder {
+  color: #888; /* Change the color of the placeholder text */
+  font-size: 14px; /* Change the font size of the placeholder text */
+  font-weight: normal;
+  white-space: pre-line; /* Allow the text to wrap to the next line */
+  word-wrap: break-word; /* Change the font weight of the placeholder text */
+  text-align: left; /* Align the placeholder text to the left within the input */
+  padding-left: 5px;
+}
+
+
+
+  form {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  label {
+    display: grid;
+    margin-bottom: 10px;
+    color: blanchedalmond;
+  }
+
+
+  input[type="text" i] {
+    height: 40px;
+    font: inherit;
+    line-height: normal;
+    width: 100%;
+    box-sizing: border-box;
+    background: var(--static);
+    color: white;
+    position: relative;
+  }
+
+  input[type="text" i]::placeholder {
+    color: var(--label);
+  }
+
+  input[type="text" i]:-webkit-autofill {
+    box-shadow: 0 0 0px 1000px var(--bg) inset;
+    -webkit-text-fill-color: white;
+    border-top-color: var(--bg);
+    border-left-color: var(--bg);
+    border-right-color: var(--bg);
+  }
+
+  input[type="text" i]:not(:focus):not(:active) .error,
+  .error .input {
+    background: var(--vibrant);
+    background: linear-gradient(135deg, rgba(var(--vibrant), .5), transparent 2px, transparent 2px);
+  }
+
+  input[type="text" i]:active,
+  input[type="text" i]:focus {
+    background: var(--focus);
+  }
+
+  .custom-file-input {
+    display: none;
+  }
+
+  .custom-file-label {
+    all: unset;
+    background: transparent;
+    border: 2px solid white;
+    padding: 0.5em 2em;
+    border-radius: 50px;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 700;
+    position: relative;
+    transition: all 300ms ease;
+    margin-left: 10px;
+    margin-bottom: 20px;
+  }
+
+  .custom-file-label:hover{
+    background-color: #157fdb69;
+  }
+
+  .custom-file-label::before,
+  .custom-file-label::after {
+    content: "";
+    display: block;
+    position: absolute;
+    transition: all 300ms ease;
+    opacity: 0;
+  }
+
+  .custom-file-label::before {
+    height: 7px;
+    width: 7px;
+    background: transparent;
+    border-right: 2px solid;
+    border-top: 2px solid;
+    right: 30px;
+    top: 21px;
+    transform: rotate(45deg);
+  }
+  .custom-file-label::after {
+    background: white;
+    height: 2px;
+    width: 50px;
+    left: 0;
+    top: 1.49em;
+  }
+  .custom-file-label:hover::before {
+    opacity: 1;
+    background-color: aliceblue;
+  }
+  .custom-file-label:hover::after {
+    width: 14px;
+    background-color: aliceblue;
+    opacity: 1;
+    transform: translateX(160px);
+  }
+
+
+  input[type="file"] {
+    all: unset;
+    background: transparent;
+    border: 2px solid white;
+    padding: 1em 4em;
+    border-radius: 50px;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 700;
+    position: relative;
+    transition: all 300ms ease;
+    margin-left: 30px;
+    margin-bottom: 20px;
+  }
+
+  input[type="file"]::before,
+  input[type="file"]::after{
+    content: "";
+    display: block;
+    position: absolute;
+    transition: all 300ms ease;
+    opacity: 0;
+  }
+
+  input[type="file"]::before{
+    height: 7px;
+    width: 7px;
+    background: transparent;
+    border-right: 2px solid;
+    border-top: 2px solid;
+    right: 30px;
+    top: 21px;
+    transform: rotate(45deg);
+  }
+
+  input[type="file"]::after{
+    background: white;
+    height: 2px;
+    width: 50px;
+    left: 0;
+    top: 1.49em;
+  }
+
+  input[type="file"]:hover::before {
+    opacity: 1;
+  }
+
+  input[type="file"]:hover::after {
+    width: 14px;
+    opacity: 1;
+    transform: translateX(160px);
+  }
+
+  button {
+    background-color: #ff4800;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 30%;
+    margin-top: 15px;
+  }
+
+  button:hover {
+    background-color: #ff9100;
+  }
+
+  .cssProgress {
+    margin-top: 10px;
+    width: 100%;
+    height: 30px;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+
+  .progress {
+    height: 100%;
+    background-color: #4CAF50;
+    border-radius: 10px;
+    transition: width 0.5s ease;
+  }
+
+  .cssProgress-bar {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 0 10px;
+  }
+
+  .cssProgress-label {
+    margin-left: 5px;
+  }
+
+  .selected-file {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .selected-file label {
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  input,
+  label {
+    display: inline-block;
+    font: inherit;
+    margin: 10px 0 0 0;
+  }
+
+  .group {
+    pointer-events: none;
+    opacity: 0.4;
+  }
+
+  .switchBtn {
+    width: 110px;
+    height: 18px;
+    margin: 15px -2px 10px -2px;
+    border: 3px outset grey;
+    padding: 2px 3px 0;
+    cursor: pointer;
+  }
+
+  .switchBtn.act {
+    background: tomato;
+    color: #fff
+  }
+
+  .switchBtn.act~.group {
+    pointer-events: auto;
+    opacity: 1;
+  }
+
+  .switchBtn.v {
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    text-align: right;
+  }
+
+  .switchBtn.y {
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+  }
+
+  .switch {
+    display: none
+  }
+
+  .switch:checked+* {
+    height: 405px;
+    transition: 1s;
+  }
+  .ins{
+    color: aliceblue;
+    font-family: cursive;
+    font-size: 15px;
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    width: fit-content;
+    box-sizing: border-box;
+  }
+  .dd-button {
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 30px;
+    border: 1px solid gray;
+    border-radius: 4px;
+    padding: 10px 30px 10px 20px;
+    background-color: #ff8800f6;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .dd-button:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    width: 0; 
+    height: 0; 
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid black;
+  }
+
+  .dd-button:hover {
+    background-color: #09ff15;
+    color: black;
+  }
+  element.style {
+    height: 75px;
+    width: fit-content;
+    align-items: center;
+  }
+
+  @media only screen and (min-width: 601px) {
+    .ins{
+      color: aliceblue;
+      font-family: system-ui;
+      font-size: 22px;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      width: fit-content;
+      box-sizing: border-box;
+      font-weight: 20;
+    }
+    
+  }

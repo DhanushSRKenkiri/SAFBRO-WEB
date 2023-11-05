@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="assets\img\tab_thumbnail.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Share your feedback and explore our contents of Safbro using your Google account. Discover and stream high-quality audio content for free.">
+  <meta name="keywords" content="Safbro, feedback, Audio content, audio-books, lectures, audio-news, audio-books">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SafBro</title>
+  <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-storage.js"></script>
+  <link rel="stylesheet" href="src\css\FeedBack.css">
+</head>
+
+<header>
+  <img id="img" src="assets/img/logo.png" alt="Img" style="height: 80px; width: fit-content; align-items: center;">
+</header>
+
+<body>
+  
+<h1>
+  Desktop Version is in Development
+</h1>
+
+  <div class="form-div">
+    <!-- Feedback form -->
+    <form onsubmit="submitFeedback(event)">
+      <h3>Feedback Form</h3>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required><br>
+  
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required><br>
+  
+      <label for="feedback">Feedback:</label>
+      <textarea id="feedback" name="feedback" rows="4" cols="50" required></textarea><br>
+  
+      <button type="submit">Submit</button>
+    </form>
+    </div>
+
+    
+  
+  <!-- Masthead dropdown -->
+  <div class=toggle-div>
+    <h2>Contact Us Through --MAST HEAD</h2>
+    <button onclick="toggleDropdown()" id="dropdown-btn">Select a Person</button>
+    <div id="dropdown" style="display:none">
+      <ul>
+        <li><button class="bt" onclick="showContactDetails('person1')">Dhanush S R Kenkiri<p>CEO & Co-Founder</p></button></li>
+        <li><button class="bt" onclick="showContactDetails('person2')">Aarav Gupta<p>CTO & Co-Founder</p></button></li>
+        <li><button class="bt" onclick="showContactDetails('person3')">Raghav N Krishnan<p>CDO</p></button></li>
+      </ul>
+      <div id="contact-details" style="display:none">
+        <h3>Contact Details</h3>
+        <ul>
+          <li>Email: <span id="email"></span></li>
+          <li>Phone: <span id="phone"></span></li>
+          <li>Address: <span id="address"></span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <nav>
+    <ul>
+      <li><a href="home.html"><img src="assets\img\home.png" alt="Home">Home</a></li>
+    </ul>
+  </nav>
+
+  <script src="src\js\feedback.js"></script>
+
+</body>
+</html>
+
+     

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Search</title>
+  <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script> <!-- Include Firebase Storage library -->
+  <link rel="stylesheet" href="src/css/search.css">
+</head>
+<body>
+  
+  <input type="search" id="searchInput" placeholder="Search for title...">
+  <button id="searchButton">Search</button>
+
+  <div id="searchResults"></div>
+
+  <script>
+    // Firebase configuration
+    const firebaseConfig = {
+      // Your Firebase configuration goes here
+      apiKey: "AIzaSyAFv90X5ry69-nPzXOADx1JaUAVXyD0vDE",
+      authDomain: "safbro-e3372.firebaseapp.com",
+      projectId: "safbro-e3372",
+      storageBucket: "safbro-e3372.appspot.com",
+      databaseURL: "https://safbro-e3372-default-rtdb.asia-southeast1.firebasedatabase.app",
+      messagingSenderId: "622539592959",
+      appId: "1:622539592959:web:1a0d80e30c77487082a8ca",
+      measurementId: "G-K5G2QPJNDV"
+    };
+
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    // Function to handle the search button click
+    document.getElementById('searchButton').addEventListener('click', function () {
+      var searchInput = document.getElementById('searchInput').value;
+      var queryWithoutSpaces = searchInput.replace(/\s/g, ''); 
+      searchFirebaseStorage(queryWithoutSpaces); // Use queryWithoutSpaces
+    });
+
+    // Function to search Firebase Storage
+    function searchFirebaseStorage(query) {
+      var storage = firebase.storage();
+      var storageRef = storage.ref();
+
+      // Perform a search in Firebase Storage for audio files
+      storageRef.child('audios/' + query + '.mp3').getDownloadURL()
+        .then(function (audioURL) {
+          displayAudioPlayer(audioURL);
+          // Get the thumbnail image
+          storageRef.child('images/' + query + '.jpg').getDownloadURL()
+            .then(function (imageURL) {
+              displayThumbnail(imageURL);
+            })
+            .catch(function (error) {
+              console.error("Image not found: " + error);
+            });
+        })
+        .catch(function (error) {
+          console.error("File not found: " + error);
+          displayErrorMessage("Audio not found");
+        });
+    }
+
+
+    // Function to display the audio player
+    function displayAudioPlayer(audioURL) {
+      var searchResults = document.getElementById('searchResults');
+      searchResults.innerHTML = `
+        <audio controls>
+          <source src="${audioURL}" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      `;
+    }
+
+    // Function to display the thumbnail image
+    function displayThumbnail(imageURL) {
+      var searchResults = document.getElementById('searchResults');
+      searchResults.innerHTML += `
+        <img src="${imageURL}" alt="Thumbnail">
+      `;
+    }
+
+    // Function to display an error message
+    function displayErrorMessage(message) {
+      var searchResults = document.getElementById('searchResults');
+      searchResults.innerHTML = `<p>${message}</p>`;
+    }
+  </script>
+</body>
+</html>

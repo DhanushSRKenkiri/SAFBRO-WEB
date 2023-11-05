@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Upload contents to Safbro using your Google account. Discover and stream high-quality audio content for free.">
+  <meta name="keywords" content="Safbro, upload, Audio content, audio-books, lectures, audio-news, audio-books">
+  <title>SafBro</title>
+  <link rel="icon" type="image/png" href="assets/img/tab_thumbnail.png">
+  <link rel="stylesheet" href="src/css/publish.css">
+
+</head>
+<header>
+  <img id="img" src="assets/img/logo.png" alt="Img" style="align-items: right; cursor: pointer;">
+</header>
+<body>
+  <div class="ins" style="display: block;">
+    <h6>1. Make sure that the image you want to upload has the dimensions of 300*600.</n> You can resize the image using an image editor like Photoshop or pixlr<a>pixlr.com</a> if needed.</h6>
+    <h6>2. When uploading audio, make sure that the size of the audio file does not exceed 5 hours.</n> If the audio is longer than 5 hours, you can consider splitting it into multiple files or compressing the audio file.</h6>
+  </div>
+
+  <button class="dd-button" onclick="toggleForms()">Upload Your Image And Audio File</button>
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+    <form>
+        <label for="title-input">Title:</label>
+        <input type="text" id="title-input" name="title" />
+
+        <label for="title-input">Description:</label>
+        <input type="text" id="des-input" name="description" placeholder="Describe briefly of whom your audio is for this helps with our recomendations" />
+
+        <div class="privacy-container">
+          <p class="privacy-label">Audio Privacy:</p>
+          <select id="privacy">
+              <option value="public">Public</option>
+              <option value="private">Private</option>
+          </select>
+          <p class="privacy-label">Select Playlist:</p>
+          <select id="privacy">
+              <option value="public">Yours</option>
+              <option value="create">Create</option>
+          </select>
+      </div>
+      
+        <div class="selected-file" id="image-container">
+          <label>No image selected</label>
+        </div>
+        <label>
+          Choose an image to upload:
+          <label for="image-input" class="custom-file-label">Select Thumbnail Image</label>
+          <input type="file" accept="image/*" id="image-input" class="custom-file-input" style="display: none;">
+        </label>
+      
+        <div class="selected-file" id="audio-container">
+          <label>No audio file selected</label>
+        </div>
+        <label>
+          Choose an audio to upload:
+          <label for="audio-input" class="custom-file-label">Select Your Audio</label>
+          <input type="file" accept="audio/*" id="audio-input" class="custom-file-input" style="display: none;">
+        </label>
+      
+        <button type="submit" id="submit-button">Upload Files</button>
+      
+        <div id="message" style="color: rgb(51, 255, 0); font-size: large; padding-top: 10px; font-weight: 500;"></div>
+      
+        <div class="cssProgress" style="display:none;">
+          <div class="progress" id="progress-bar-fill">
+            <div class="cssProgress-bar" data-percent="0" style="width: 0%;">
+              <span class="cssProgress-label" id="percentage">0%</span>
+            </div>
+          </div>
+        </div>
+      </form>
+  </div>
+  </div>
+</div>
+
+  <button class="dd-button" onclick="toggleForms2()">Upload From Youtube</button>
+
+  <nav>
+    <ul>
+      <li><a href="home.html"><img src="assets/img/home.png" alt="Home">Home</a></li>
+    </ul>
+  </nav>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+  <script src="https://apis.google.com/js/api.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <script type="module" src="src/js/publish.js"></script>
+  <script>
+    function toggleForms() {
+      var modal = document.getElementById("modal");
+      modal.style.display = "block";
+    }
+
+    function closeModal() {
+      var modal = document.getElementById("modal");
+      modal.style.display = "none";
+    }
+  </script>
+
+</body>
+</html>

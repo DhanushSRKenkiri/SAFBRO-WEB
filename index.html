@@ -1,0 +1,81 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sign up for Safbro using your Google account. Discover and stream high-quality audio content for free.">
+    <meta name="keywords" content="Safbro, Sign Up, Audio content, Google account">
+    <title>Safbro-SignUp</title>
+    <link rel="stylesheet" href="src\css\index.css">
+    <link rel="icon" href="assets\img\tab_thumbnail.png" type="image/png">
+
+</head>
+
+
+<body>
+  
+
+    <header>
+        <img id="img" src="assets\img\logo.png" alt="Img">
+      </header>
+
+
+      
+
+<div id="login-box">
+
+  <h1 style="display: none;">SignUp</h1>
+  
+  <div class="right">
+    <span class="loginwith">Sign in with<br />Google</span>
+    <button class="social-signin google" id='login'>Log in with Google</button>
+  </div>
+</div>
+<form>
+
+  <span class="loginwith">Sign in with<br />Google</span>
+  <div class="social">
+    <img src="assets\img\Google.webp" id='login1' class="go"></img>
+  </div>
+</form>
+</body>
+
+<div id="popup" class="popup">
+  <h2 style="font-weight: bolder; font-style: italic; color: aqua;">Pre-Alpha Release</h2>
+  <div class="popup-content">
+    
+    <div class="content">
+      <h4>1. Welcome to pre-alpha release of the SafBro where users can stream, share and discover audio books, lectures and audio-news for free.</h4>
+    </div>
+    <div class="content">
+      <h4>2. Please note that this release is a very early version of our platform and many features are still in development. We appreciate your patience as we continue to work on improving the platform.</h4>
+    </div>
+    <div class="content">
+      <h4>3. We don't take any user-data which includes passwords,You Can Login With Google.</h4>
+    </div>
+    <div class="content">
+      <h4>4. We request streamers and Creators to access the platform using device with screen-size more than 600px (Example- A Desktop).</h4>
+    </div>
+    <div class="content">
+      <h4>5. We are actively seeking feedback from our users. Your input will be extremely valuable in shaping the future direction of the platform.</h4>
+    </div>
+    <div class="content">
+      <h4>6. Thank you for joining us on this journey as we work towards creating "the good-side of the internet".</h4>
+    </div>
+  </div>
+  <button class="close-btn" onclick="closePopup()">Done</button>
+</div>
+
+<script>
+  function closePopup() {
+    document.querySelector('.popup').style.display = 'none';
+  }
+</script>
+<script>
+  window.onload = function() {
+    document.querySelector('.popup').style.display = 'flex';
+  }
+</script>
+
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase.js"></script>
+<script src="src\js\index.js" type="module"></script>
+
+</html>

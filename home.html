@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore contents of Safbro using your Google account. Discover and stream high-quality audio content for free.">
+  <meta name="keywords" content="Safbro, home, Audio content, audio-books, lectures, audio-news, audio-books">
+  <link rel="icon" href="assets\img\tab_thumbnail.png" type="image/png">
+  <title>SafBro</title>
+  <link rel="stylesheet" href="src\css\style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-5.15.4" crossorigin="anonymous" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+uJsPz9D4xy3U0AqGAgTOkYOrU7z6aB9tPXPKqcBuaZLk1L" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+</head>
+<body>
+
+<div class="body">
+
+  <header>
+    <img id="img" src="assets/img/logo.png" alt="Img" style="height: 80px; width: fit-content; align-items: center;">
+  </header>
+  
+  <div class="main">
+
+    <h3>Recents</h3>
+    <div class="recent-images-container">
+      <div id="recent-images" class="recent-images">
+      </div>
+    </div>
+
+    <h3 style="top: 60px;">Explore</h3>
+
+    <div class="cards" id="cards-container">
+      <img src="" class="card_image" style="display: none;" alt="">
+      <div class="card_title"></div>
+          <button style="display:none;" id="playButton" class="button"><i class="fas fa-play"></i></button>
+          <div class="addtoplaylist" style="display: none;">
+            Add to Playlist
+          </div>
+     </div>
+
+     <h3 style="top: 70px;">Audio-Books</h3>
+
+    <div class="ab-images-container-wrapper">
+     <div class="ab-images-container">
+      <div id="ab-images" class="ab-images">
+        <img src="assets/ab_image/The Magic Path of Intuition   FLORENCE SCOVEL SHEEN  Complete Audiobook.jpg" alt="">
+        <h4 class="h4n">The Magic Path of Intuition   FLORENCE SCOVEL SHEEN  Complete Audiobook</h4>
+      </div>
+      <audio id="audioElement">
+        <source src="assets/ab_audio/The Magic Path of Intuition   FLORENCE SCOVEL SHEEN  Complete Audiobook.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      <div id="ab-images" class="ab-images">
+        <img src="assets/ab_image/THINK STRAIGHT  Change Your Thoughts Change Your Life  FULL AUDIOBOOK.jpg" alt="">
+        <h4 class="h4n">THINK STRAIGHT  Change Your Thoughts Change Your Life  FULL AUDIOBOOK</h4>
+      </div>
+      <audio id="audioElement">
+        <source src="assets/ab_audio/THINK STRAIGHT  Change Your Thoughts Change Your Life  FULL AUDIOBOOK.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      <div id="ab-images" class="ab-images">
+        <img src="assets/ab_image/Dr Apj Abdul Kalam  Wings of Fire  Autobiography  English  Inspiring Audio Story.jpg" alt="">
+        <h4 class="h4n">Dr Apj Abdul Kalam  Wings of Fire  Autobiography  English  Inspiring Audio Story</h4>
+      </div>
+      <audio id="audioElement">
+        <source src="assets/ab_audio/Dr Apj Abdul Kalam  Wings of Fire  Autobiography  English  Inspiring Audio Story.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div> 
+  </div> 
+
+    <h3 style="top: 70px;">Explore More</h3>
+
+    <div class="cards2" id="cards-container2">
+      <img src="" class="card_images2" style="display: none;" alt="">
+      <div class="card_title2"></div>
+          <button style="display:none;" id="playButton" class="button"><i class="fas fa-play"></i></button>
+     </div>
+
+
+  <div id="bottom_player">
+  <div class="music-container" id="music-container">
+    <div class="seekbar">
+      <input type="range" min="0" max="100" value="0" class="seekbar_range">
+    </div>
+    </div>
+    <div class="navigation">
+      <button id="prev" class="action-btn">
+        <i class="fa fa-backward" aria-hidden="true"></i>
+      </button>
+      <button id="play" class="action-btn action-btn-big">
+        <i class="fa fa-play" aria-hidden="true"></i>
+      </button>
+      <button id="next" class="action-btn">
+        <i class="fa fa-forward" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const divElement = document.getElementById("ab-images");
+  const audioElement = document.getElementById("audioElement");
+  const playerContainer = document.querySelector('#bottom_player');
+  let currentlyPlayingAudio = null;
+
+  divElement.addEventListener("click", () => {
+    if (currentlyPlayingAudio !== null) {
+      currentlyPlayingAudio.pause();
+    }
+      audioElement.play();
+      playerContainer.style.display = 'block';
+      currentlyPlayingAudio = audioElement;
+  });
+
+  const seekbar = document.querySelector('.seekbar');
+  const pauseButton = document.querySelector('#play');
+  const prevButton = document.querySelector('#prev');
+  const nextButton = document.querySelector('#next');
+
+  // Update the seekbar value when the audio time updates
+  audioElement.addEventListener('timeupdate', function() {
+    seekbarRange.value = (audioElement.currentTime / audioElement.duration) * 100;
+  });
+  // Update the seekbar value as the audio plays
+  audioElement.addEventListener('timeupdate', function() {
+    seekbar.value = (audioElement.currentTime / audioElement.duration) * 100;
+  });
+
+  // Update the audio time as the seekbar is moved
+  seekbar.addEventListener('input', function() {
+    audioElement.currentTime = (seekbar.value / 100) * audioElement.duration;
+  });
+
+  pauseButton.addEventListener('click', function() {
+    audioElement.pause();
+  });
+
+  // Skip back 10 seconds when the prev button is clicked
+  prevButton.addEventListener('click', function() {
+    audioElement.currentTime = Math.max(audioElement.currentTime - 10, 0);
+  });
+
+  // Skip forward 10 seconds when the next button is clicked
+  nextButton.addEventListener('click', function() {
+    audioElement.currentTime = Math.min(audioElement.currentTime + 10, audioElement.duration);
+  });
+</script>
+
+</div>
+  
+<div class="body2">
+    <div class="header">
+      <div class="logo-container">
+        <div class="logo">
+          <div class="logo-img">
+             <img src="assets\img\logo.png" alt="SafBro Logo">
+          </div>
+      </div>
+      </div>
+      <div class="profile-container">
+        <div class="profile-box">
+          <img id="userPhoto" class="open-button" onclick="openForm()" src="" alt="User Profile Photo">
+        </div>
+        <div class="form-popup" id="myForm">
+          <form action="/action_page.php" class="form-container">
+            <button type="button" id="logout" class="btn cancel">LogOut</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="body-container">
+      <div class="sidebar">
+        <div class="sidebar-items">
+          <a href="home.html" class="sidebar-item"><i class="fa fa-home"></i>Home</a>
+          <a href="Search.html" class="sidebar-item"><i class="fa fa-search"></i>Search</a>
+          <a href="library.html" class="sidebar-item"><i class="fa fa-book"></i>Library</a>
+          <a href="Publish.html" class="sidebar-item"><i class="fa fa-upload"></i>Upload</a>
+          <a href="#" class="sidebar-item"><i class="fa fa-pencil-square-o"></i>FeedBack</a>
+          <hr>
+          <a href="station.html" class="sidebar-item"><i class="fa fa-headphones"></i>Your Station</a>
+          <a href="#" class="sidebar-item"><i class="	fa fa-window-maximize"></i>Subscriptions</a>
+          <a href="#" class="sidebar-item"><i class="fa fa-line-chart"></i>Trending</a>
+        </div>
+      </div>
+            </div>
+          </div>
+        </div>
+       </div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+<script>
+  function openForm() {
+    var form = document.getElementById("myForm");
+    if (form.style.display === "block") {
+        form.style.display = "none";
+    } else {
+        form.style.display = "block";
+    }
+  }
+  </script>
+
+
+  <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-firestore.js"></script>
+
+  <script type="module" src="src\js\home.js"></script>
+  <nav class="nav">
+    <ul>
+      <li><a href="home.html"><img src="assets\img\library.png" alt="Home">Your's</a></li>
+      <li><a href="Publish.html"><img src="assets\img\upload.png" alt="Publish">Upload</a></li>
+      <li><a href="FeedBack.html"><img src="assets\img\feedback.gif" alt="Library">FeedBack</a></li>
+      <li><a href="settings.html"><img src="assets\img\settings.png" alt="Settings">Settings</a></li>
+    </ul>
+  </nav>
+  <script>
+  </script>
+</body>
+
+
+
+</html>

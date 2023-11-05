@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/css/settings.css">
+    <title>SafBro</title>
+    <link rel="icon" type="image/png" href="assets\img\tab_thumbnail.png">
+</head>
+<body>
+    <header>
+        <img id="img" src="assets/img/logo.png" alt="Img" style="height: 80px; width: fit-content; align-items: center;">
+    </header>
+
+    <button style="margin-top: 50px;" id="logout">Logout</button>
+    
+    <footer>
+        <p>&copy; 2023 SafBro-All Rights Reserved</p>
+    </footer>
+    <nav>
+        <ul>
+          <li><a href="home.html"><img src="assets\img\library.png" alt="Home">Your's</a></li>
+          <li><a href="Publish.html"><img src="assets\img\upload.png" alt="Publish">Upload</a></li>
+          <li style="display: none;"><a href="FeedBack.html"><img src="assets\img\feedback.gif" alt="Library">FeedBack</a></li>
+          <li><a href="FeedBack.html"><img src="assets\img\settings.png" alt="Library">Settings</a></li>
+        </ul>
+    </nav>
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-firestore.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            // Your Firebase configuration goes here
+            apiKey: "AIzaSyAFv90X5ry69-nPzXOADx1JaUAVXyD0vDE",
+            authDomain: "safbro-e3372.firebaseapp.com",
+            projectId: "safbro-e3372",
+            storageBucket: "safbro-e3372.appspot.com",
+            databaseURL: "https://safbro-e3372-default-rtdb.asia-southeast1.firebasedatabase.app",
+            messagingSenderId: "622539592959",
+            appId: "1:622539592959:web:1a0d80e30c77487082a8ca",
+            measurementId: "G-K5G2QPJNDV"
+        };
+
+        // Initialize Firebase app
+        const app = firebase.initializeApp(firebaseConfig);
+
+        const logout = document.querySelector('#logout');
+
+        logout.addEventListener('click', (e) => {
+            e.preventDefault();
+            firebase.auth().signOut().then(() => {
+                console.log("User Signed Out");
+                alert("You have been signed out.");
+                localStorage.removeItem("loggedIn"); // Clear the loggedIn flag
+                window.location.href = "index.html";
+            }).catch((error) => {
+                console.log("Error signing out:", error);
+            });
+        });
+    </script>
+</body>
+</html>

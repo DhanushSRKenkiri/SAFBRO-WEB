@@ -1,92 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Search</title>
-  <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script> <!-- Include Firebase Storage library -->
-  <link rel="stylesheet" href="src/css/search.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Prediction</title>
 </head>
 <body>
-  
-  <input type="search" id="searchInput" placeholder="Search for title...">
-  <button id="searchButton">Search</button>
-
-  <div id="searchResults"></div>
+  <input type="text" id="searchInput" placeholder="Type your search...">
+  <ul id="searchResults"></ul>
 
   <script>
-    // Firebase configuration
-    const firebaseConfig = {
-      // Your Firebase configuration goes here
-      apiKey: "AIzaSyAFv90X5ry69-nPzXOADx1JaUAVXyD0vDE",
-      authDomain: "safbro-e3372.firebaseapp.com",
-      projectId: "safbro-e3372",
-      storageBucket: "safbro-e3372.appspot.com",
-      databaseURL: "https://safbro-e3372-default-rtdb.asia-southeast1.firebasedatabase.app",
-      messagingSenderId: "622539592959",
-      appId: "1:622539592959:web:1a0d80e30c77487082a8ca",
-      measurementId: "G-K5G2QPJNDV"
-    };
+    const searchKeywords = [
+      "JavaScript tutorial",
+      "Web development",
+      "HTML and CSS",
+      "Programming tips",
+      "Frontend frameworks",
+      "Node.js",
+      "Machine learning basics",
+      "Data science tutorials",
+    ];
 
+    const searchInput = document.getElementById('searchInput');
+    const searchResults = document.getElementById('searchResults');
 
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
+    searchInput.addEventListener('input', updateSearchResults);
 
-    // Function to handle the search button click
-    document.getElementById('searchButton').addEventListener('click', function () {
-      var searchInput = document.getElementById('searchInput').value;
-      var queryWithoutSpaces = searchInput.replace(/\s/g, ''); 
-      searchFirebaseStorage(queryWithoutSpaces); // Use queryWithoutSpaces
-    });
+    function updateSearchResults() {
+      const inputValue = searchInput.value.toLowerCase();
+      const matchingResults = searchKeywords.filter(keyword =>
+        keyword.toLowerCase().includes(inputValue)
+      );
 
-    // Function to search Firebase Storage
-    function searchFirebaseStorage(query) {
-      var storage = firebase.storage();
-      var storageRef = storage.ref();
-
-      // Perform a search in Firebase Storage for audio files
-      storageRef.child('audios/' + query + '.mp3').getDownloadURL()
-        .then(function (audioURL) {
-          displayAudioPlayer(audioURL);
-          // Get the thumbnail image
-          storageRef.child('images/' + query + '.jpg').getDownloadURL()
-            .then(function (imageURL) {
-              displayThumbnail(imageURL);
-            })
-            .catch(function (error) {
-              console.error("Image not found: " + error);
-            });
-        })
-        .catch(function (error) {
-          console.error("File not found: " + error);
-          displayErrorMessage("Audio not found");
-        });
+      displaySearchResults(matchingResults);
     }
 
+    function displaySearchResults(results) {
+      searchResults.innerHTML = '';
 
-    // Function to display the audio player
-    function displayAudioPlayer(audioURL) {
-      var searchResults = document.getElementById('searchResults');
-      searchResults.innerHTML = `
-        <audio controls>
-          <source src="${audioURL}" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      `;
-    }
-
-    // Function to display the thumbnail image
-    function displayThumbnail(imageURL) {
-      var searchResults = document.getElementById('searchResults');
-      searchResults.innerHTML += `
-        <img src="${imageURL}" alt="Thumbnail">
-      `;
-    }
-
-    // Function to display an error message
-    function displayErrorMessage(message) {
-      var searchResults = document.getElementById('searchResults');
-      searchResults.innerHTML = `<p>${message}</p>`;
+      results.forEach(result => {
+        const listItem = document.createElement('li');
+        listItem.textContent = result;
+        searchResults.appendChild(listItem);
+      });
     }
   </script>
 </body>
